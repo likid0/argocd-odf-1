@@ -42,7 +42,7 @@ odf:
     requests:
       cpu: 1
       memory: 2Gi
-    disk: 50Gi
+    disk: 80Gi
   osd:
     requests:
       cpu: 2
@@ -81,10 +81,10 @@ cephtools:
 
 # If OCP Cluster is deployed in AWS and dedicated option enabled it will deploy 3 ODF workers(m5.4xlarge) using machinesets one per AZ, .
 dedicated: 
-  enabled: false
+  enabled: true
   aws:
     #you can use $ oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].metadata.labels.machine\.openshift\.io/cluster-api-cluster}'
-    clusterid: 'cluster-tlhvx-wmzb6'
+    clusterid: 'cluster-rt45m-pcqkq'
     #youn can use $oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].spec.template.spec.providerSpec.value.placement.region}' 
     region: 'us-east-2'
     #you can use $oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].spec.template.spec.providerSpec.value.ami.id}'
@@ -104,6 +104,6 @@ osds:
 #Number of replicas for the device set configuration. Set to 3 by default.
 #  replicas: 3
 #Storage Class that will be used to provision the ODF OSDs. If using LSO set it to 'localblock'
-  scname: 'thin'
+  scname: 'gp3-csi'
 #Size of Each PV that will be provisioned to be used by the OSDs.
   disksize: '512Gi'
