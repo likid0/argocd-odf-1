@@ -14,7 +14,7 @@ mcgstandalone:
 
 odf:
 # ODF Version/Channel
-  channel: 'stable-4.10'
+  channel: 'stable-4.11'
 # Resource request/limits per service
   mon:
     requests:
@@ -81,7 +81,7 @@ cephtools:
 
 # If OCP Cluster is deployed in AWS and dedicated option enabled it will deploy 3 ODF workers(m5.4xlarge) using machinesets one per AZ, .
 dedicated: 
-  enabled: true
+  enabled: false
   aws:
     #you can use $ oc get machineset -n openshift-machine-api -o jsonpath='{.items[0].metadata.labels.machine\.openshift\.io/cluster-api-cluster}'
     clusterid: 'cluster-c2s88-7nztf'
@@ -104,6 +104,6 @@ osds:
 #Number of replicas for the device set configuration. Set to 3 by default.
 #  replicas: 3
 #Storage Class that will be used to provision the ODF OSDs. If using LSO set it to 'localblock'
-  scname: 'gp3-csi'
+  scname: 'thin-csi'
 #Size of Each PV that will be provisioned to be used by the OSDs.
   disksize: '512Gi'
