@@ -17,14 +17,10 @@ spec:
   arbiter: {}
   {{- if eq $.Values.osds.scname "localblock" }}
   flexibleScaling: {{ default "true" $.Values.odf.flexibleScaling }}
-  {{- else}}
-  flexibleScaling: {{ default "false" $.Values.odf.flexibleScaling }}
   {{- end }}
   encryption:
   {{- if $.Values.osds.encryption.enabled }}
     enable: true
-  {{- else}}
-    enable: false
   {{- end }}
     kms: {}
   externalStorage: {}
